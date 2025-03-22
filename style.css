@@ -1,0 +1,227 @@
+.date, #weekDays li{
+    width: calc(100% / 8);
+    list-style: none;
+    display: inline-block;
+    padding: 3px;
+}
+.date{
+    height: 200px;
+}
+.date_wrapper{
+    width: 100%;
+    height: 100%;
+    border: solid;
+    display: flex;
+    flex-direction: column;
+}
+.head_wrapper{
+    height: 30%;
+    border-bottom: solid;
+    display: flex;
+}
+.head_wrapper p{
+    display: inline;
+    padding: 3px;
+}
+.date_head{
+    border-left: solid;
+}
+.date_cont{
+    height: 70%;
+}
+.date_head, .date_cont, .image_wrapper{
+    display: flex;
+    /*position: relative;*/
+    /*align-items: center;*/
+    justify-content: center;
+}
+.image_wrapper{
+    max-height: 100%;
+    align-self: center;
+}
+.image_wrapper img{
+    /*position: absolute;
+    max-width: 80%;*/
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+#weekDays li{
+    text-align: center;
+    border: solid 1px;
+}
+
+#topHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main{
+    max-height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+#calendarList{
+    overflow-y: scroll;
+}
+
+#today{
+    background-color: rgba(255, 183, 0, 0.579);
+}
+.null_day .date_wrapper, .null_day .head_wrapper, .null_day .date_head{
+    border: none;
+}
+.null_day p{
+    visibility: hidden;
+}
+
+
+
+#eventsWrapper ul li, .confirmBtn, .cancelBtn, #scrollToTodayBtn, #reloadManageBtn{
+    padding: 0.5em 1em;
+    margin: 1em;
+    color: #000;
+    background-color: #e7e7e7;
+    border: 3px solid #c7c7c7;
+    box-shadow: 1px 1px 0px 0px #a7a7a7, 2px 2px 0px 0px #a7a7a7, 3px 3px 0px #a7a7a7;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s all ease;
+}
+#eventsWrapper ul li.logged, .confirmBtn:active, .cancelBtn:active, #scrollToTodayBtn:active, #reloadManageBtn:active, #reloadManageBtn.inManage{
+    box-shadow: 0px 0px 0px 0px;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    background-color: #c7c7c7;
+    border: 3px solid #a7a7a7;
+}
+
+
+#eventsWrapper ul li{
+    list-style: none;
+    display: inline-block;
+}
+#datePreview li{
+    width: 150px;
+}
+#headerWrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+#eventsWrapper{
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+#eventsWrapper ul li img{
+    height: 50px;
+    width: auto;
+}
+
+.buttonsWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.confirmBtn::after {
+    content: "CONFIRM";
+}
+.cancelBtn::after {
+    content: "CANCEL";
+}
+.confirmBtn{
+    background-color: #6dff5a;
+    border: 3px solid #57cd48;
+    box-shadow: 1px 1px 0px 0px #49ab3c, 2px 2px 0px 0px #49ab3c, 3px 3px 0px #49ab3c;
+}
+.confirmBtn:active{
+    background-color: #6dff5a;
+    border: 3px solid #57cd48;
+}
+.fetching{
+    pointer-events: none;
+    cursor: wait;
+}
+.fetching::after{
+    animation: fetching 1s infinite;
+}
+@keyframes fetching {
+    from {opacity: 100%; filter: grayscale(0);}
+    to {opacity: 50%; filter: grayscale(0.6);}
+}
+.fetch_failed{
+    pointer-events: none;
+    cursor: wait;
+    background-color: #ff5a5a;
+    border: 3px solid #cd4848;
+}
+.fetch_failed::after{
+    display: none;
+}
+
+
+#main.disabled{
+    pointer-events: none;
+    filter: blur(2px) grayscale(0.6);
+}
+#manage_window{
+    position: absolute;
+    background-color: #fff;
+    height: 70vh;
+    width: 100vw;
+    transition: 0.5s all ease;
+}
+#manage_window.show{
+    top: 30vh;
+}
+#manage_window.hide{
+    top: 100vh;
+    animation-name: hideManageWindow;
+    animation-delay: 0.5s;
+    animation-duration: 1ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+@keyframes hideManageWindow { /*needed, because #manahe_window is position: absolute;, so no overflow hidden in parrent is working*/
+    to{
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+    }
+}
+
+body{
+    margin: 0;
+}
+#appWrapper{
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+#scrollToTodayBtn{
+    /*height: 1em;
+    width: 3em;*/
+    font-size: 1em;
+    font-weight: bold;
+    background-color: rgba(255, 183, 0, 0.579);
+    border: 3px solid rgba(219, 157, 0, 0.579);
+    box-shadow: 1px 1px 0px 0px rgba(177, 127, 0, 0.579), 2px 2px 0px 0px rgba(177, 127, 0, 0.579), 3px 3px 0px rgba(177, 127, 0, 0.579);
+}
+#scrollToTodayBtn.hidden{
+    display: none;
+}
+#scrollToTodayBtn, #reloadManageBtn{
+    /*font-size: 1em;
+    padding: 5px 10px;*/
+}
+
+
+@media only screen and (max-width: 600px) {
+    #calendarList{white-space: nowrap;}
+    #weekDays{visibility: hidden;}
+    .date{width: 100px}
+    #reloadManageBtn{display: none;}
+}

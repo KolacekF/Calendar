@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+        <script type="module">
+            import {Main} from "./main.js";
+            
+            Main()
+        </script>
+    </head>
+    <body>
+        <div id="appWrapper">
+            <main id="main">
+                <header id="topHeader">
+                    <button type="button" id="scrollToTodayBtn" class="hidden">DNES</button>
+                    <h1 id="header_heading">MĚSÍC</h1>
+                    <button type="button" id="reloadManageBtn" onclick="{
+                        const urlParams = new URLSearchParams(window.location.search);
+                        
+                        if (urlParams.get('manage')) { //if manage is open
+                            urlParams.delete('manage');
+                        } else { //if manage is not open
+                            //first test if authorized to continue, if not, return and not continue
+                            if (prompt('39 + 3 =') != 42) {
+                                return
+                            }
+                            urlParams.append('manage', 'true');
+                        }
+                        window.location.search = urlParams.toString();
+                    }">NASTAVENÍ</button>
+                </header>
+                <ul id="weekDays">
+                    <li>Pondělí</li>
+                    <li>Úterý</li>
+                    <li>Středa</li>
+                    <li>Čtvrtek</li>
+                    <li>Pátek</li>
+                    <li>Sobota</li>
+                    <li>Neděle</li>
+                </ul>
+                <ul id="calendarList"></ul>
+            </main>
+            <footer id="manage_window" class="hide"></footer>
+        </div>
+    </body>
+</html>
