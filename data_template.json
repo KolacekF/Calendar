@@ -1,22 +1,27 @@
+THIS FILE IS A TEMPLATE. THERE ARE USED COMENTS, 
+THAT HAVE TO BE DELETED WHEN USING THIS AS DATA SOURCE
 {
     "dictionary":{
-
+        "foo": "icons/bar.png",
+        "bar": "icons/foo.png"
+        //"alias_used_in_JSON": "path_to_file"
     },
     "calendar":{
         "months":{
             "1":{
-                "n": 1,
+                "n": 1,                //month number
                 "days":{
                     "1":{
-                        "n": 1,
-                        "name": "Pondělí",
+                        "n": 1,        //day number
+                        "nWeek": "6",  //n-th day of week
                         "events":{
                             "small": [],
-                            "big": ["sch"]
+                            "big": ["foo, bar"]
                         }
                     },
                     "2":{},
                     "3":{}
+                    //and so on
                 }
             },
             "2":{
@@ -25,8 +30,10 @@
                     "1":{},
                     "2":{},
                     "3":{}
+                    //and so on
                 }
             }
+            //and so on
         }
     }
 }
