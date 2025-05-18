@@ -16,10 +16,7 @@
 2. Upload everything (`data_template.json` is not necessary) to your server and access the page by web browser
 3. When the page is accessed by kid, no event can be modified (only viewed). The kid will see current day with events
 4. when on bigger screen (for example PC / landscape mode), in upper right corner a settings button is visible. When you click on day, you can set events for that day. When new events are confirmed, data are send to `setData.php` on server and saved to `data.json`
-   - You can also access this by appending to url, so that the URL looks like:
-"""URL
-index.html?manage=true
-"""
+   - You can also access this by appending to url, so that the URL looks like: `index.html?manage=true`
 5. When you want to create next month, you have manually modify `data.json` stored on server
    - Or you can use `create_data.py` for generating `export.json`. You can copy all items from "dictionary" inside `data.json` into `export.json` and then renaming `export.json` to `data.json`.
 
@@ -30,11 +27,11 @@ index.html?manage=true
 - `data.json` - data
 - `data_template.json` - template for `data.json`
 - `create_data.py` - generates `export.json` with given months. Months are given as arguments from command line. `export.json` is created only with two basic events and is intended to be used as `data.json`
-"""bash
+```bash
 #creates json with data for whole year
 > python create_data.py 1 12 #Windows
 user$ python3 create_data.py 1 12 #Linux / MacOS
-"""
+```
 - `setData.php` - light PHP script, that receives data in JSON format and rewrites `data.json`. If not used, you cannot change events from within the web page and only can 
 
 - `main.js` - called from `index.html` as starting script. It drives usage of data fetching, creating of HTMLDOM and usage of `manage.js`.
